@@ -1,31 +1,32 @@
 // everything related to Quiz App 
-class Quiz {
+export default class Quiz {
     constructor(quastions) {
         this._quastions = quastions;
         this._currentQuastionIndex = 0;
         this._wrapper = document.querySelector('#app-wrapper');
         this._startBtn = document.querySelector('#start-quiz');
 
-
         // eventListeners
-        
+
         // when click happens on start quize button
         this._startBtn.addEventListener('click', this._updateQuizContent.bind(this));
 
         // when click happens on the app wrapper
         this._wrapper.addEventListener('click', e => {
-            e.preventDefault();
-
             const {
                 target
             } = e;
 
-            // if click happens on quastion's options
-            if (target.classList.contains('option')) {
-                this._validateCorrectnessOfAnswer(target.id);
-
-                // if all quastions were answered, create show result button in last quastion 
-                this._createBodyButtons();
+            // if client select one of the quastion's options
+            if(this._bodyDiv){
+                this._bodyDiv.querySelectorAll('input[type=radio]').forEach(radio => {
+                    radio.addEventListener('change', (e) => {
+                        this._validateCorrectnessOfAnswer(e.currentTarget.id);
+    
+                        // if all quastions were answered, create show result button in last quastion 
+                        this._createBodyButtons();
+                    });
+                });
             }
 
             // if click happens on next quastion's button
@@ -118,11 +119,15 @@ class Quiz {
         const currentQuastion = this._quastions[this._currentQuastionIndex];
 
         const options = `
-            <li id="quastion">${currentQuastion.quastion}</li>
-            <li id="a" class="option">${currentQuastion.a}</li>
-            <li id="b" class="option">${currentQuastion.b}</li>
-            <li id="c" class="option">${currentQuastion.c}</li>
-            <li id="d" class="option">${currentQuastion.d}</li>
+               <li id="quastion">${currentQuastion.quastion}</li>
+               <label for="a" class="option d-block">${currentQuastion.a}</label>
+               <input type="radio" id="a" class="d-none" name="op">
+               <label for="b" class="option d-block" >${currentQuastion.b}</label>
+               <input type="radio" id="b" class="d-none" name="op">
+               <label for="c" class="option d-block">${currentQuastion.c}</label>
+               <input type="radio" id="c" class="d-none" name="op">
+               <label for="d" class="option d-block">${currentQuastion.d}</label>
+               <input type="radio" id="d" class="d-none" name="op">
         `;
 
         this._createAndAppendElem('ul', this._bodyDiv, '', '', options);
@@ -267,16 +272,16 @@ class Quiz {
 
     _updateQuastionOptions(quastion) {
         // show the correct option
-        document.querySelector(`#${quastion.correctAnswer}`).classList.add('true');
+        document.querySelector(`label[for=${quastion.correctAnswer}]`).classList.add('true');
 
         // if client's answer was wrong
         if (quastion.correctAnswer != quastion.clientAnswer) {
-            document.querySelector(`#${quastion.clientAnswer}`).classList.add('wrong');
+            document.querySelector(`label[for=${quastion.clientAnswer}]`).classList.add('wrong');
         }
 
         // disable options
-        document.querySelectorAll('.option').forEach(li => {
-            li.classList.add('disabled');
+        document.querySelectorAll('.option').forEach(label => {
+            label.classList.add('disabled');
         });
     }
 

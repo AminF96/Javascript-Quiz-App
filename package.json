@@ -1,0 +1,38 @@
+{
+  "name": "javascript-quiz-app",
+  "version": "1.0.0",
+  "description": "This Javscript Application provides the ability to run a four-choice test with any number of questions for the user ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "NODE_ENV=development webpack --mode development",
+    "prod": "NODE_ENV=production webpack --mode production",
+    "serve": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AminF96/Javascript-Quiz-App.git"
+  },
+  "keywords": [
+    "javascript"
+  ],
+  "author": "Amin.F96",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AminF96/Javascript-Quiz-App/issues"
+  },
+  "homepage": "https://github.com/AminF96/Javascript-Quiz-App#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.2.0",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

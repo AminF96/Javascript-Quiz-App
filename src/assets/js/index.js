@@ -1,3 +1,11 @@
+"use strict";
+// import styles
+import '../css/bootstrap-rtl.css';
+import '../css/custom.css';
+
+// import js file
+import Quiz from "./quiz";
+
 const quastions = [{
         quastion: 'کدام کشور در قاره آمریکای مرکزی و شمالی قرار دارد ؟',
         a: 'کلمبیا',

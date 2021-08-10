@@ -54,7 +54,7 @@ li {
     margin-bottom: 18px;
 }
 
-.body li.option {
+.body label.option {
     background-color: #efefef;
     color: #3a3a3a;
     position: relative;
@@ -68,11 +68,11 @@ li {
     transition: .4s;
 }
 
-.body li.option:hover{
+.body label.option:hover{
     background-color: #d6d2d2;
 }
 
-.body li.option::before {
+.body label.option::before {
     content: '';
     position: absolute;
     top: 0;
@@ -86,17 +86,17 @@ li {
     transform-origin: right;
 }
 
-.body li.option.true,
-.body li.option.wrong {
+.body label.option.true,
+.body label.option.wrong {
     color: #fff;
 }
 
-.body li.option.true::before {
+.body label.option.true::before {
     background-color: #00940b;
     transform: scaleX(1);
 }
 
-.body li.option.wrong::before {
+.body label.option.wrong::before {
     background-color: #ff1515;
     transform: scaleX(1);
 }
